@@ -11,7 +11,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        echo 'testy git';
+        echo 'testy git zmiana do kolejnego commitu i brancha';
         ?>
     </body>
 </html>
