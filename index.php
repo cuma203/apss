@@ -7,7 +7,7 @@
     <body>
         <?php
         echo 'testy git';
-	echo "kolejny wpis na nowej branczy!!!!!!";
+	echo "kolejny wpis na nowej branczy!";
         ?>
     </body>
 </html>
