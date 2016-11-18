@@ -1,13 +1,15 @@
+<?php
+ 
+ob_start();
+require_once("smarty/Smarty.class.php");
+require_once("core/init.php");					// __autoload()
 
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <?php
-        echo 'testy git';
-	echo "kolejny wpis na nowej branczy!";
-        ?>
-    </body>
-</html>
+$router = registry::register("router");
+dispatcher::dispatch($router);
+
+$i18n = registry::register("i18n");
+$i18n->setMainLanguage();
+
+ob_end_flush();
+
+?>
