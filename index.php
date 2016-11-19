@@ -4,6 +4,7 @@ ob_start();
 require_once("smarty/Smarty.class.php");
 require_once("core/init.php");					// __autoload()
 
+
 $router = registry::register("router");
 dispatcher::dispatch($router);
 
