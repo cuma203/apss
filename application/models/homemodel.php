@@ -7,7 +7,8 @@ class homemodel
     private $__router;
     private $__params;
     private $__db;
-
+    private static $db;
+    
     public function __construct()
     {
         $this->__config = registry::register("config");
@@ -24,6 +25,38 @@ class homemodel
     public function getTypesOfProducts()
     {
         return  $this->__db->execute("SELECT * FROM products_type");
+    }
+    
+    public function getCustomers($page=null)
+    {
+        
+        $SQL = "SELECT * FROM aplikacja.customers ORDER BY customerNumber DESC LIMIT ".($page?$page.'0':0).",10";
+        
+        $SQL2 = "SELECT count(*) AS count FROM aplikacja.customers ";
+        
+        $data['all']    =  $this->__db->execute($SQL);
+        $data['count']  =  $this->__db->execute($SQL2);
+        return $data;
+    }
+    
+    
+    static public function editCustomer($params){
+        self::$db = registry::register("db");
+        $params = $params['POST'];
+        preg_match_all('!\d+!', $params['numer'], $numer);
+
+        $SQL = "UPDATE aplikacja.customers SET
+                    customerName='".$params['nazwa']."',
+                    contactLastName='".$params['nazwisko']."',
+                    contactFirstName='".$params['imie']."',
+                    phone='".$params['tel']."',
+                    addressLine1='".$params['adres']."',
+                    city='".$params['miasto']."',
+                    state='".$params['stan']."',
+                    postalCode='".$params['kod']."',
+                    country='".$params['kraj']."'
+                WHERE customerNumber=".$numer[0][0];
+        self::$db->execute($SQL); 
     }
     
     public function saveFile($params){

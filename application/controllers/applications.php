@@ -18,8 +18,14 @@ class applications extends controller{
         $this->main->directory_helper;
         
         module_load('HEADER');
-        $this->tpl->display('applications/index.tpl' );
+//        $this->tpl->display('applications/index2.tpl' );
         module_load('FOOTER');
 
+    }
+    
+    public function verifyNipAction($nip)
+    {
+        var_dump($nip);exit;
+        return applicationmodel::validateNip($nip);
     }
 }

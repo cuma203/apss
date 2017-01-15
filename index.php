@@ -2,6 +2,7 @@
  
 ob_start();
 require_once("smarty/Smarty.class.php");
+require_once("application/Components/componentLoader.php");
 require_once("core/init.php");					// __autoload()
 
 

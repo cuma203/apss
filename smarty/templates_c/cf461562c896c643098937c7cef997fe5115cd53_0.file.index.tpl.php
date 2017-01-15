@@ -1,6 +1,6 @@
 <?php
 /* Smarty version 3.1.30, created on 2016-10-10 22:50:32
-  from "D:\xamp\htdocs\test-new\application\views\contact\index.tpl" */
+  from "D:\xamp\htdocs\test-new\application\views\contact\index2.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
@@ -11,7 +11,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
     'cf461562c896c643098937c7cef997fe5115cd53' => 
     array (
-      0 => 'D:\\xamp\\htdocs\\test-new\\application\\views\\contact\\index.tpl',
+      0 => 'D:\\xamp\\htdocs\\test-new\\application\\views\\contact\\index2.tpl',
       1 => 1476132570,
       2 => 'file',
     ),

@@ -7,7 +7,6 @@ class main
         $arr = explode("_", $name);
         $filename = $arr[0]."_".$arr[1].".php";
         $type = $arr[1];
-
         include_once($filename);
 
         if(!defined(strtoupper($arr[0])))
@@ -16,27 +15,41 @@ class main
         }
      }
 
-     static public function _templateLoader($controller, $template)
-     {
-        $config = registry::register("config");
-        $templatefile = $config->view_path.$controller."/".$template.".php";
+    /**
+     * @param $controller
+     * @param $template
+     */
+    static public function _templateLoader($controller, $template)
+    {
+        $pos = strrpos($template, "Action");
+        
+        if ($pos === false) {
+        
+            $config = registry::register("config");
+            $templatefile   = $config->view_path.$controller."/".$template;
+            $mainTemplate   = $config->view_path.'main/index.html';
 
-        if(file_exists($templatefile))
-        {
-            include_once($templatefile);
+            if(file_exists($mainTemplate)){
+                include_once($mainTemplate);
+                exit;
+            }
+            switch($templatefile){
+                case file_exists($templatefile.'.html'):
+                    include_once($templatefile.'.html');
+                    break;
+                case file_exists($templatefile.'.tpl'):
+                    include_once($templatefile.'.tpl');
+                    break;
+                case file_exists($templatefile.'.php'):
+                    include_once($templatefile.'.php');
+                    break;
+                default:
+                    $error = registry::register("sgException");
+                    $error->throwException("Widok ".$template.".php jest niedostępny w lokalizacji ".$config->view_path.$controller);
+                    break;
+            }
         }
-        else
-        {
-            if(!file_exists($templatefile)){
-                $templatefile = $config->view_path.$controller."/".$template.".tpl";
-                include_once($templatefile);
-              }else{
-                $error = registry::register("sgException");
-                $error->throwException("Widok ".$template.".php jest niedostępny w lokalizacji ".$config->view_path.$controller);
-                  
-              }
-        }
-     } 
+    }
 }
 
 ?>

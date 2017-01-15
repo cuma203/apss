@@ -102,12 +102,12 @@ $configs['helper_path']                 = "core".DS."helpers".DS;
 $configs['library_path']                = "core".DS."library".DS;
 $configs['driver_path']                 = "core".DS."drivers".DS;
 
-$configs['db_user']                     = 'kodi';
-$configs['db_host']                     = 'mysql.cba.pl';
-$configs['db_pass']                     = 'konrad20';
-$configs['db_name']                     = 'cuma203';
+//$configs['db_user']                     = 'kodi';
+//$configs['db_host']                     = 'mysql.cba.pl';
+//$configs['db_pass']                     = 'konrad20';
+//$configs['db_name']                     = 'cuma203';
 
-//$configs['db_user']                     = 'root';
-//$configs['db_host']                     = 'localhost';
-//$configs['db_pass']                     = '';
-//$configs['db_name']                     = 'aplikacja';
+$configs['db_user']                     = 'root';
+$configs['db_host']                     = 'localhost';
+$configs['db_pass']                     = '';
+$configs['db_name']                     = 'aplikacja';
