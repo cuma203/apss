@@ -12,11 +12,13 @@ app.component("mainComp",{
 	templateUrl:"application/views/"+controller+"/content.html"
 });
 
-var mApp = angular.module('menuApp', ['myApp']);
 app.component("sideMenuComp",{
     templateUrl: "application/Components/Angular/Menu/side_menu.html"
 });
 
+app.component("loginBarComp",{
+    templateUrl: "application/Components/Angular/LoginBar/login_bar.html"
+});
 
 
 
