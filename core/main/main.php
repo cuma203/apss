@@ -21,13 +21,18 @@ class main
      */
     static public function _templateLoader($controller, $template)
     {
+
         $pos = strrpos($template, "Action");
-        
+
         if ($pos === false) {
-        
+
             $config = registry::register("config");
             $templatefile   = $config->view_path.$controller."/".$template;
-            $mainTemplate   = $config->view_path.'main/index.html';
+            if(!isset($_SESSION['login']) && !isset($_SESSION['logged'])){
+                $mainTemplate   = $config->view_path.'main/LoginPanel/login_panel.html';
+            }else{
+                $mainTemplate   = $config->view_path.'main/index.html';
+            }
 
             if(file_exists($mainTemplate)){
                 include_once($mainTemplate);

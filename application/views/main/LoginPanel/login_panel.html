@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Panel logowania</title>
+    <link rel="stylesheet" href="application/views/main/LoginPanel/style.css">
+    <script src="application/media/js/jquery-3.1.1.min.js"></script>
+    <script src="application/media/bootstrap/js/bootstrap.js"></script>
+</head>
+<body>
+<div id="login" style="margin-top:10%;">
+    <form name='form-login' method="post">
+        <span class="fontawesome-user"></span>
+        <input type="text" id="user" placeholder="Nazwa" name="username" required>
+        <span class="fontawesome-lock"></span>
+        <input type="password" id="pass" placeholder="Hasło" name="password" required>
+        <input type="submit" value="Login" id="log_in">
+    </form>
+</div>
+<div class="info-data">Zaloguj się by móc korzystać z witryny!
+    <br />lub &nbsp;<b><u>utwórz</u></b> &nbsp; konto jeśli go nie posiadasz</div>
+<script>
+//    action="home/authorizeUserAction"
+//    function verifyUser(){
+        $('#log_in').click(function() {
+            var user = $('#user').val();
+            var pass = $('#pass').val();
+
+            if (user.length < 1 || pass.length < 1) {
+                alert('nima');
+            }else{
+                $.ajax({
+                    type     : "POST",
+                    url      : "home/authorizeUserAction",
+                    data     : {
+                        username    : user,
+                        password    : pass
+                    },
+                    success: function(ret) {
+                        console.log(ret,'suc');
+                    },
+                    complete: function() {
+                        console.log('comp');
+                    },
+                    error: function(jqXHR, errorText, errorThrown) {
+                        console.log('errr');
+                    }
+                });
+            }
+        });
+//    };
+</script>
+</body>
+</html>

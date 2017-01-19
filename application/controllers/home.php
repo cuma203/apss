@@ -23,23 +23,8 @@ class home extends controller{
         $this->main->module_helper;
         $this->main->model_helper;
         $this->main->directory_helper;
-
-//        mail('konrado11111@wp.pl', 'jakis temat', 'wiadomość testowa tralalalalala');
-//        module_load('SHD');
-        $this->model = new homemodel();
-
-        $data = $this->model->getCustomers();
-//         $data = $this->getCustomerAction();
-//        var_dump($data);exit;
-        $count = $data['count'];
-        $count = $count[0]['count']/10;
-        $count = ceil($count);
-
-
-        $this->tpl->assign("data", $data['all']);
-        $this->tpl->assign("count", $count);
-
-
+//        unset($_SESSION['login']);
+//        unset($_SESSION['logged']);
     }
 
     public function save(){
@@ -70,8 +55,25 @@ class home extends controller{
         $hm = new homemodel();
         $cust = $hm->getCustomers($this->__params['POST']['page']);
                 
-//        var_dump($cust['all']);exit;
         echo json_encode($cust['all'],true);
     }
-   
+
+    public function authorizeUserAction(){
+        $this->__config = registry::register("config");
+        $this->__router = registry::register("router");
+        $this->__params = $this->__router->getParams();
+        $h = new homemodel();
+        $login = $h->loginUser($this->__params);
+
+        if($login){
+            $_SESSION['login']  = $login;
+            $_SESSION['logged'] = true;
+            header('home');
+        }else{
+            unset($_SESSION['login']);
+            unset($_SESSION['logged']);
+//            echo "Niepoprawne dane!!!";
+//            return false;
+        }
+    }
 }

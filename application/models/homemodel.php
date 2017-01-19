@@ -15,6 +15,7 @@ class homemodel
         $this->__router = registry::register("router");
         $this->__params = $this->__router->getParams();
         $this->__db = registry::register("db");
+        self::$db = registry::register("db");
     }
 
     public function getDataHome($type)
@@ -42,7 +43,7 @@ class homemodel
     
     static public function editCustomer($params){
         self::$db = registry::register("db");
-        $params = $params['POST'];
+
         preg_match_all('!\d+!', $params['numer'], $numer);
 
         $SQL = "UPDATE aplikacja.customers SET
@@ -58,7 +59,23 @@ class homemodel
                 WHERE customerNumber=".$numer[0][0];
         self::$db->execute($SQL); 
     }
-    
+
+    /**
+     * @param $params
+     */
+    public static function loginUser($params){
+        if($params){
+            $SQL ="SELECT 
+                        username 
+                        FROM users 
+                        WHERE username='".$params['username']."'
+                        AND password='".md5($params['password'])."'";
+
+            return self::$db->execute($SQL);
+
+        }
+    }
+
     public function saveFile($params){
 
         $types = $this->__db->execute("SELECT * FROM products_type");
