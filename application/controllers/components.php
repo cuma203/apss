@@ -1,14 +1,21 @@
 <?php
-class contact extends controller{
-        
+
+class components extends controller{
+
+    private $model;
+    private $__config;
+    private $__router;
+    private $__params;
+    private $__db;
+
     public function __call($method, $args){
         if(!  is_callable($method)){
             $this->sgException->errorPage(404);
         }
     }
-    
+
     public function main() { }
-    
+
     public function index() {
         $this->main->metatags_helper;
         $this->main->head_helper;
@@ -17,14 +24,12 @@ class contact extends controller{
         $this->main->model_helper;
         $this->main->directory_helper;
     }
-    public function getDataAction(){
-        $m = new contactmodel();
-        $data = $m->getCustomers();
-//        var_dump($data['all']);
-        echo json_encode($data['all']);
-    }
 
-    public function sendMessageAction(){
-        echo 'dasds';
+    public function getSideMenuAction(){
+        $this->__router = registry::register("router");
+        $this->__params = $this->__router->getParams();
+        $menu = new componentsmodel();
+        $m = $menu->getMenuData();
+        echo json_encode($m,true);
     }
 }

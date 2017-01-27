@@ -57,23 +57,4 @@ class home extends controller{
                 
         echo json_encode($cust['all'],true);
     }
-
-    public function authorizeUserAction(){
-        $this->__config = registry::register("config");
-        $this->__router = registry::register("router");
-        $this->__params = $this->__router->getParams();
-        $h = new homemodel();
-        $login = $h->loginUser($this->__params);
-
-        if($login){
-            $_SESSION['login']  = $login;
-            $_SESSION['logged'] = true;
-            header('home');
-        }else{
-            unset($_SESSION['login']);
-            unset($_SESSION['logged']);
-//            echo "Niepoprawne dane!!!";
-//            return false;
-        }
-    }
 }

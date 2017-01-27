@@ -1,6 +1,13 @@
 <?php
-class contact extends controller{
+
+class offers extends controller{
         
+    private $model;
+    private $__config;
+    private $__router;
+    private $__params;
+    private $__db;
+
     public function __call($method, $args){
         if(!  is_callable($method)){
             $this->sgException->errorPage(404);
@@ -17,14 +24,5 @@ class contact extends controller{
         $this->main->model_helper;
         $this->main->directory_helper;
     }
-    public function getDataAction(){
-        $m = new contactmodel();
-        $data = $m->getCustomers();
-//        var_dump($data['all']);
-        echo json_encode($data['all']);
-    }
 
-    public function sendMessageAction(){
-        echo 'dasds';
-    }
 }

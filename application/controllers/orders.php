@@ -1,6 +1,13 @@
 <?php
-class applications extends controller{
+
+class orders extends controller{
         
+    private $model;
+    private $__config;
+    private $__router;
+    private $__params;
+    private $__db;
+
     public function __call($method, $args){
         if(!  is_callable($method)){
             $this->sgException->errorPage(404);
@@ -16,16 +23,6 @@ class applications extends controller{
         $this->main->module_helper;
         $this->main->model_helper;
         $this->main->directory_helper;
-        
-        module_load('HEADER');
-//        $this->tpl->display('applications/index2.tpl' );
-        module_load('FOOTER');
+    }
 
-    }
-    
-    public function verifyNipAction($nip)
-    {
-        var_dump($nip);exit;
-        return applicationmodel::validateNip($nip);
-    }
 }

@@ -1,24 +1,53 @@
 
-var app = angular.module('myApp', []);
-app.controller('MyCtrl', function($scope) {
-    $scope.firstName = "Donnie";
-    var self = this;
-    self.lastName = "Brasco";
+var app = angular.module('myApp2', ['ngRoute']);
+app.config(function($routeProvider,$locationProvider) {
+    $locationProvider.html5Mode(true);
+
+    $routeProvider
+        .when("/", {
+            templateUrl : "application/views/home/content.html"
+        })
+        .when("/home", {
+            templateUrl : "application/views/home/content.html"
+        })
+        .when("/offers", {
+            templateUrl : "application/views/offers/content.html"
+        })
+        .when("/customers", {
+            templateUrl : "application/views/customers/content.html"
+        })
+        .when("/orders", {
+            templateUrl : "application/views/orders/content.html"
+        })
+        .when("/contact", {
+            templateUrl : "application/views/contact/content.html"
+        });
 });
 var url 		= window.location.pathname.split("/");
-var controller 	= (url[2].length>0?url[2]:'home');
+var controller 	= (url[2].length>0?url[3]:'home');
 
 app.component("mainComp",{
 	templateUrl:"application/views/"+controller+"/content.html"
 });
 
-app.component("sideMenuComp",{
-    templateUrl: "application/Components/Angular/Menu/side_menu.html"
+// function sendMess($http){
+//     console.log('fffffff');
+//     $http.post('contact/sendMessageAction')
+//         .then(
+//             function(response){
+//                 $scope.menuData = response.data;
+//             },
+//             function(response){
+//                 console.log(response.data,'testy2');
+//                 // failure callback
+//             }
+//         );
+// }
+window.addEventListener('load',function(){
+var currentDate = new Date().getFullYear();
+$('#currentYear').text(currentDate);
 });
 
-app.component("loginBarComp",{
-    templateUrl: "application/Components/Angular/LoginBar/login_bar.html"
-});
 
 
 
