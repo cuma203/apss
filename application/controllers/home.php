@@ -17,14 +17,7 @@ class home extends controller{
     public function main() { }
     
     public function index() {
-        $this->main->metatags_helper;
-        $this->main->head_helper;
-        $this->main->loader_helper;
-        $this->main->module_helper;
-        $this->main->model_helper;
-        $this->main->directory_helper;
-//        unset($_SESSION['login']);
-//        unset($_SESSION['logged']);
+//        echo phpinfo();exit;
     }
 
     public function save(){

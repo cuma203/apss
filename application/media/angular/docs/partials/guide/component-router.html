@@ -303,7 +303,7 @@ stop at the <code>Heroes</code> <strong>Routing Component</strong> and not try t
 directive and a <strong>Route Config</strong> that defines a set of child <strong>Routes</strong> which delegate through to the
 <code>HeroList</code> and <code>HeroDetail</code> <strong>Components</strong>.</p>
 <h2 id="heroescomponent">HeroesComponent</h2>
-<p>Create a new file <code>heroes.js</code>, which defines a new Angular module for the <strong>Components</strong> of this feature
+<p>Create a new file <code>home.js</code>, which defines a new Angular module for the <strong>Components</strong> of this feature
 and registers the Heroes <strong>Component</strong>.</p>
 <pre><code class="lang-js">angular.module(&#39;heroes&#39;, [])
 .component(&#39;heroes&#39;, {
@@ -315,7 +315,7 @@ and registers the Heroes <strong>Component</strong>.</p>
 })
 </code></pre>
 <p>Remember to load this file in the index.html:</p>
-<pre><code class="lang-html">&lt;script src=&quot;/app/heroes.js&quot;&gt;&lt;/script&gt;
+<pre><code class="lang-html">&lt;script src=&quot;/app/home.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <p>and also to add the module as a dependency of the <code>app</code> module:</p>
 <pre><code class="lang-js">angular.module(&#39;app&#39;, [&#39;ngComponentRouter&#39;, &#39;heroes&#39;])
@@ -341,7 +341,7 @@ that has the <code>name</code> property of <code>&quot;Heroes&quot;</code>.</p>
 <h2 id="herolist-component">HeroList Component</h2>
 <p>The HeroList <strong>Component</strong> is the first component in the application that actually contains significant
 functionality. It loads up a list of heroes from a <code>heroService</code> and displays them using <code>ng-repeat</code>.
-Add it to the <code>heroes.js</code> file:</p>
+Add it to the <code>home.js</code> file:</p>
 <pre><code class="lang-js">.component(&#39;heroList&#39;, {
   template:
     &#39;&lt;div ng-repeat=&quot;hero in $ctrl.heroes&quot;&gt;\n&#39; +

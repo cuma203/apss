@@ -20,6 +20,9 @@ class componentsmodel
         return $this->_db->execute("SELECT * FROM aplikacja.side_menu");
     }
 
+    public function getTopMenuData(){
+        return $this->_db->execute("SELECT * FROM aplikacja.top_menu order by id desc");
+    }
 }
 
 ?>

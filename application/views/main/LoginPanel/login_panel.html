@@ -8,47 +8,62 @@
     <script src="application/media/bootstrap/js/bootstrap.js"></script>
 </head>
 <body>
+
 <div id="login" style="margin-top:10%;">
-    <form name='form-login' method="post">
+    <div class="navbar-brand" href="#" style="width:100%;font-size: 32px; opacity: 0.8;
+     padding-left:20px; margin-bottom:40px; text-align: center;">
+        <b style="color: #ffffff;">CRM</b><span style="color:#cd5c5c;">system</span>
+    </div>
+    <form name='form-login' method="post" onsubmit="loginUser();return false;">
         <span class="fontawesome-user"></span>
         <input type="text" id="user" placeholder="Nazwa" name="username" required>
         <span class="fontawesome-lock"></span>
         <input type="password" id="pass" placeholder="Hasło" name="password" required>
-        <input type="submit" value="Login" id="log_in">
+        <input type="submit" value="Login" id="log_in" name="zaloguj">
+        <input type="reset" onclick="clearAlert();">
     </form>
+    <div class="info-data">Zaloguj się by móc korzystać z witryny!
+        <br />lub &nbsp;<b><u>utwórz</u></b> &nbsp; konto jeśli go nie posiadasz
+    </div>
+    <div id="alert-err" style="margin-top: 20px; color: firebrick; font-weight: bold; text-align: center;">
+
+    </div>
 </div>
-<div class="info-data">Zaloguj się by móc korzystać z witryny!
-    <br />lub &nbsp;<b><u>utwórz</u></b> &nbsp; konto jeśli go nie posiadasz</div>
 <script>
-//    action="home/authorizeUserAction"
-//    function verifyUser(){
-        $('#log_in').click(function() {
+    function loginUser() {
             var user = $('#user').val();
             var pass = $('#pass').val();
 
-            if (user.length < 1 || pass.length < 1) {
-                alert('nima');
-            }else{
+            if (user.length > 0 && pass.length > 0) {
                 $.ajax({
-                    type     : "POST",
-                    url      : "login/authorizeUserAction",
-                    data     : {
-                        username    : user,
-                        password    : pass
+                    type: "POST",
+                    url: "login/authorizeUserAction",
+                    dataType: 'JSON',
+                    data: {
+                        username: user,
+                        password: pass
                     },
-                    success: function(ret) {
-                        console.log(ret,'suc');
+                    success: function (ret) {
+//                        location.href = 'home';
+                        console.log(ret.responseText, 'suc');
                     },
-                    complete: function() {
-                        console.log('comp');
+                    complete: function (ret) {
+                        if(ret.responseText === 'OK'){
+                            location.href = 'home';
+                        }
                     },
-                    error: function(jqXHR, errorText, errorThrown) {
-                        console.log('errr');
+                    error: function (jqXHR, errorText, errorThrown) {
+                        if(jqXHR.responseText !== 'OK'){
+                            $("#alert-err").html(jqXHR.responseText);
+                        }
                     }
                 });
             }
-        });
-//    };
+    };
+
+    function clearAlert(){
+        $("#alert-err").html('');
+    }
 </script>
 </body>
 </html>

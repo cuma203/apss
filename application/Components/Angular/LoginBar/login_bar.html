@@ -1,13 +1,11 @@
 <div class='navbar navbar-inverse navbar-fixed-top'>
     <!--<a class="navbar-brand" href="#"><b style="color: #ffffff;">CRM</b><span style="color:#cd5c5c;">system</span></a>-->
     <div class='navbar-inner'>
-    <span style="font-size:16px; color: #0bd0ff; margin-right:50px;margin-top:10px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span>
-    <span style="font-size:16px; color: #0bd0ff; margin-right:50px;margin-top:10px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-cog"></span>
-    <span style="font-size:16px; color: #0bd0ff; margin-right:50px;margin-top:10px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-pencil"></span>
-        <span style="font-size:16px; cursor:pointer; color: #0bd0ff; margin-right:50px;margin-top:10px; cursor: pointer;"
-              class="pull-right hidden-xs showopacity glyphicon glyphicon-log-out" ng-click="logoutUser()"></span>
-    </div>
-
-
-
+        <span ng-repeat="menu in topMenu">
+            <a href="{{menu.url}}" ng-click="menu.url==''?logoutUser():true;" style="font-size:16px; text-decoration:none; cursor:pointer; color: #0bd0ff;
+                    margin-right:50px;margin-top:10px; cursor: pointer;" ng-style="setStyle(menu.url)"
+                  class="pull-right hidden-xs showopacity glyphicon {{menu.class}}">
+            </a>
+        </span>
+</div>
 </div>

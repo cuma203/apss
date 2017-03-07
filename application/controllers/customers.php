@@ -1,6 +1,14 @@
 <?php
 class customers extends controller{
-        
+
+    private $_model;
+
+    public function __construct(array $params = Array())
+    {
+        parent::__construct($params);
+        $this->_model = new customersmodel();
+    }
+
     public function __call($method, $args){
         if(!  is_callable($method)){
             $this->sgException->errorPage(404);
@@ -10,22 +18,15 @@ class customers extends controller{
     public function main() { }
     
     public function index() {
-        $this->main->metatags_helper;
-        $this->main->head_helper;
-        $this->main->loader_helper;
-        $this->main->module_helper;
-        $this->main->model_helper;
-        $this->main->directory_helper;
-//
-//        module_load('HEADER');
-//        $this->tpl->display('contact/index.tpl' );
-//        module_load('FOOTER');
 
     }
-    public function getDataAction(){
-        $m = new contactmodel();
-        $data = $m->getCustomers();
-//        var_dump($data['all']);
-        echo json_encode($data['all']);
+    public function getAllCustomersAction(){
+        $cust = $this->_model->getAllCustomers();
+        $arr = array();
+        for($i=0;$i<count($cust);$i++){
+            $arr[$i]['customerNumber']  = $cust[$i]['customerNumber'];
+            $arr[$i]['customerName']    = $cust[$i]['customerName'];
+        }
+        echo json_encode($arr);
     }
 }

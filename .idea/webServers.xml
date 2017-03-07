@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="3091e15a-aa51-4b6e-8865-065e94c507b4" name="WAMP Apache" url="http://localhost/crm_system">
+        <fileTransfer port="0" mountedRoot="D:\wamp\www\crm_system" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

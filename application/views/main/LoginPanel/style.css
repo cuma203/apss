@@ -76,9 +76,19 @@ after { clear: both; }
 }
 
 #login form input[type="submit"] {
-    background: #b5cd60;
+     background: #b5cd60;
+     border: 0;
+     width: 75%;
+     height: 40px;
+     border-radius: 3px;
+     color: white;
+     cursor: pointer;
+     transition: background 0.3s ease-in-out;
+ }
+#login form input[type="reset"] {
+    background: #a0a0a0;
     border: 0;
-    width: 100%;
+    width: 20%;
     height: 40px;
     border-radius: 3px;
     color: white;
@@ -92,8 +102,17 @@ after { clear: both; }
     width: 300px;
     margin:0 auto;
     text-align: center;
-    margin-top:-40px;
+    margin-top:20px;
     padding-left: 40px;
     color: #bbb;
     font-size: 15px;
+}
+.login-bar-info{
+    font-size:16px;
+    color: #0bd0ff;
+    margin-right:50px;
+    margin-top:10px;
+}
+.login-bar-info:hover{
+    color: #ffffff;
 }

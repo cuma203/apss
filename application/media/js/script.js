@@ -1,78 +1,102 @@
+angular.module('myApp.component', [
+    'ngComponentRouter',
+    'loginBar',
+    'sideMenu',
+    'footer',
+    'home',
+    'offers',
+    'orders',
+    'customers',
+    'brands',
+    'contact',
+    'communication'
+])
+    .config(['$locationProvider', function($locationProvider) {
+        $locationProvider.html5Mode(true);
+    }])
 
-var app = angular.module('myApp2', ['ngRoute']);
-app.config(function($routeProvider,$locationProvider) {
-    $locationProvider.html5Mode(true);
+    .value('$routerRootComponent', 'myApp')
 
-    $routeProvider
-        .when("/", {
-            templateUrl : "application/views/home/content.html"
-        })
-        .when("/home", {
-            templateUrl : "application/views/home/content.html"
-        })
-        .when("/offers", {
-            templateUrl : "application/views/offers/content.html"
-        })
-        .when("/customers", {
-            templateUrl : "application/views/customers/content.html"
-        })
-        .when("/orders", {
-            templateUrl : "application/views/orders/content.html"
-        })
-        .when("/contact", {
-            templateUrl : "application/views/contact/content.html"
+    .component('myApp', {
+        template:
+        '<div class="content-data">' +
+        '<ng-outlet></ng-outlet>' +
+        '</div>\n',
+        $routeConfig: [
+            {path: 'offers/', name: 'Offers', component: 'offers'},
+            {path: 'orders/', name: 'Orders', component: 'orders'},
+            {path: 'customers/', name: 'Customers', component: 'customers'},
+            {path: 'contact/', name: 'Contact', component: 'contact'},
+            {path: 'communication/', name: 'Communication', component: 'communication'},
+            {path: 'brands/', name: 'Brands', component: 'brands'},
+            {path: 'home/', name: 'Home', component: 'home'},
+            {path: '/', name: 'Home', component: 'home'}
+        ]
+    })
+//----------HOME-------------------
+angular.module('home', [])
+    .component('home', {
+        templateUrl: 'application/views/home/home.html'
+    })
+
+//---------OFFERS-------------------
+angular.module('offers', [])
+    .component('offers', {
+        // template: ['$templateCache', function ($templateCache) {
+        //     return $templateCache.get('offers')
+        // }]
+        templateUrl:'application/views/offers/offers.html'
+    })
+
+//---------ORDERS-------------------
+angular.module('orders', [])
+    .component('orders', {
+        templateUrl:'application/views/orders/orders.html'
+    })
+
+//---------CUSTOMERS-------------------
+angular.module('customers', [])
+    .component('customers', {
+        templateUrl:'application/views/customers/customers.html'
+    })
+
+//---------CONTACT-------------------
+angular.module('contact', [])
+    .component('contact', {
+        templateUrl:'application/views/contact/contact.html'
+    })
+
+//---------BRANDS-------------------
+angular.module('brands', [])
+    .component('brands', {
+        // templateUrl:'application/views/contact/contact.html'
+    })
+
+//---------COMMUNICATION-------------------
+angular.module('communication', [])
+    .component('communication', {
+        controller: communicationCtrl,
+        templateUrl:'application/views/communication/communication.html'
+    })
+
+function communicationCtrl($scope,$http){
+    $http.post('communication/getUserCommunicationAction').then(
+        function (resp) {
+            $scope.getCommunicationUser = resp.data;
+            console.log(resp.data);
         });
-});
-var url 		= window.location.pathname.split("/");
-var controller 	= (url[2].length>0?url[3]:'home');
 
-app.component("mainComp",{
-	templateUrl:"application/views/"+controller+"/content.html"
-});
+    $http.post('communication/getCustomersFromCommUserAction').then(
+        function (resp) {
+            var odp = resp.data;
+            $scope.customers = odp;
+        });
 
-// function sendMess($http){
-//     console.log('fffffff');
-//     $http.post('contact/sendMessageAction')
-//         .then(
-//             function(response){
-//                 $scope.menuData = response.data;
-//             },
-//             function(response){
-//                 console.log(response.data,'testy2');
-//                 // failure callback
-//             }
-//         );
-// }
-window.addEventListener('load',function(){
-var currentDate = new Date().getFullYear();
-$('#currentYear').text(currentDate);
-});
-
-
-
-
-function htmlbodyHeightUpdate(){
-    var height3 = $( window ).height()
-    var height1 = $('.nav').height()+50
-    height2 = $('.main').height()
-    if(height2 > height3){
-        $('html').height(Math.max(height1,height3,height2)+10);
-        $('body').height(Math.max(height1,height3,height2)+10);
-    }
-    else
-    {
-        $('html').height(Math.max(height1,height3,height2));
-        $('body').height(Math.max(height1,height3,height2));
-    }
-
+    $http.post('customers/getAllCustomersAction').then(
+        function (resp) {
+            $scope.allCustomers = resp.data;
+        });
 }
-$(document).ready(function () {
-    htmlbodyHeightUpdate()
-    $( window ).resize(function() {
-        htmlbodyHeightUpdate()
-    });
-    $( window ).scroll(function() {
-        height2 = $('.main').height()
-        htmlbodyHeightUpdate()
-    });
-});
+
+
+

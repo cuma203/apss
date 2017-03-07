@@ -1,23 +1,19 @@
 <?php
+class user extends controller{
 
-class components extends controller{
-
-    private $model;
-    private $__config;
-    private $__router;
-    private $__params;
-    private $__db;
+    private $_model;
 
     public function __construct(array $params = Array())
     {
         parent::__construct($params);
+        $this->_model = new usermodel();
+        $this->__config = registry::register("config");
         $this->__router = registry::register("router");
         $this->__params = $this->__router->getParams();
-        $this->model    = new componentsmodel();
     }
 
     public function __call($method, $args){
-        if(!  is_callable($method)){
+        if(!is_callable($method)){
             $this->sgException->errorPage(404);
         }
     }
@@ -33,11 +29,18 @@ class components extends controller{
         $this->main->directory_helper;
     }
 
-    public function getSideMenuAction(){
-        echo json_encode($this->model->getMenuData(),true);
+    public function getUserInfoAction(){
+        $res =  $this->_model->getUserInfo();
+        echo json_encode($res);
+
+    }
+    public function getUserInfoAddressAction(){
+        $res =  $this->_model->getUserAddress();
+        echo json_encode($res);
     }
 
-    public function getTopMenuAction(){
-        echo json_encode($this->model->getTopMenuData(),true);
+    public static function getUserIdAction(){
+        return usermodel::getUserId();
     }
+
 }

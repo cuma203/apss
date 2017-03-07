@@ -1,5 +1,5 @@
 <?php
-class login extends controller {
+class logout extends controller {
     private $_model;
     private $__config;
     private $__router;
@@ -22,17 +22,9 @@ class login extends controller {
     public function main() { }
 
     public function index() {
-
     }
-
-    public function authorizeUserAction(){
-        $login = $this->_model->loginUser($this->__params);
-        if($login){
-            $_SESSION['username']  = $login[0]["username"];
-            $_SESSION['logged'] = true;
-            echo "OK";exit;
-        }else{
-            echo "Wprowadzono niepoprawny login lub hasło!";exit;
-        }
+    public function logoutUserAction(){
+        unset($_SESSION['username']);
+        unset($_SESSION['logged']);
     }
 }

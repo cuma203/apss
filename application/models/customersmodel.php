@@ -6,7 +6,6 @@ class customersmodel
     private $__router;
     private  $params;
     private $_db;
-    private static $db;
 
     public function __construct()
     {
@@ -16,8 +15,12 @@ class customersmodel
         $this->_db  = registry::register("db");
     }
 
-    public function getMenuData(){
-        return $this->_db->execute("SELECT * FROM aplikacja.side_menu");
+    public function getAllCustomers(){
+        return $this->_db->execute("SELECT * FROM aplikacja.customers");
+    }
+
+    public function getCustomerName($customerId){
+        return $this->_db->execute("SELECT customerName FROM aplikacja.customers WHERE customerNumber='".$customerId."'");
     }
 
 }
