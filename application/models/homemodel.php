@@ -7,13 +7,15 @@ class homemodel
     private $__router;
     private $__params;
     private $__db;
-
+    private static $db;
+    
     public function __construct()
     {
         $this->__config = registry::register("config");
         $this->__router = registry::register("router");
         $this->__params = $this->__router->getParams();
         $this->__db = registry::register("db");
+        self::$db = registry::register("db");
     }
 
     public function getDataHome($type)
@@ -26,6 +28,54 @@ class homemodel
         return  $this->__db->execute("SELECT * FROM products_type");
     }
     
+    public function getCustomers($page=null)
+    {
+        
+        $SQL = "SELECT * FROM aplikacja.customers ORDER BY customerNumber DESC LIMIT ".($page?$page.'0':0).",10";
+        
+        $SQL2 = "SELECT count(*) AS count FROM aplikacja.customers ";
+        
+        $data['all']    =  $this->__db->execute($SQL);
+        $data['count']  =  $this->__db->execute($SQL2);
+        return $data;
+    }
+    
+    
+    static public function editCustomer($params){
+        self::$db = registry::register("db");
+
+        preg_match_all('!\d+!', $params['numer'], $numer);
+
+        $SQL = "UPDATE aplikacja.customers SET
+                    customerName='".$params['nazwa']."',
+                    contactLastName='".$params['nazwisko']."',
+                    contactFirstName='".$params['imie']."',
+                    phone='".$params['tel']."',
+                    addressLine1='".$params['adres']."',
+                    city='".$params['miasto']."',
+                    state='".$params['stan']."',
+                    postalCode='".$params['kod']."',
+                    country='".$params['kraj']."'
+                WHERE customerNumber=".$numer[0][0];
+        self::$db->execute($SQL); 
+    }
+
+    /**
+     * @param $params
+     */
+    public static function loginUser($params){
+        if($params){
+            $SQL ="SELECT 
+                        username 
+                        FROM users 
+                        WHERE username='".$params['username']."'
+                        AND password='".md5($params['password'])."'";
+
+            return self::$db->execute($SQL);
+
+        }
+    }
+
     public function saveFile($params){
 
         $types = $this->__db->execute("SELECT * FROM products_type");

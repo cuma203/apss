@@ -23,7 +23,7 @@ class dispatcher
 		
 		if(!file_exists($controllerfile))
 		{
-			$sgException->throwException("Kontroler '".$controller."' nie został znaleziony w systemie!");
+			$sgException->throwException("Kontroler '".$controller."' nie został znaleziony w systemie!".$controllerfile);
 		}
 		
 		include_once($controllerfile);

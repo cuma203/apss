@@ -11,6 +11,9 @@ echo '
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script type="text/javascript" src="'.directory_javascript().'jQuery.js"></script>
+        <script type="text/javascript" src="'.directory_javascript().'angular.min.js"></script>
+            <link rel="stylesheet"; href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
+<script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
         <script type="text/javascript" src="'.directory_javascript().'timer.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -18,6 +21,9 @@ echo '
         <title>smarty test</title>
     </head>
 <body>
+        <div class="header-color" style="height:160px;">
+        <div class="header-logo">codi<span>apps</span></div>
+        </div>
         <div id="header-nav" style="margin:0 auto; width:1000px; height:40px;">
         <nav class="navbar navbar-light bg-faded" >
           <ul class="nav navbar-nav">';
@@ -33,5 +39,4 @@ echo    '</ul>
             <button class="btn btn-outline-success" type="submit">Szukaj</button>
           </form>
         </nav>
-    </div>
-    <hr>';
+    </div><hr>';

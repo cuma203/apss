@@ -3,19 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/xamp/htdocs/test-new/application/media/css/style.css</file>
-            <file>file:/D:/xamp/htdocs/test-new/core/helpers/directory_helper.php</file>
-            <file>file:/D:/xamp/htdocs/test-new/application/views/about/index.tpl</file>
-            <file>file:/D:/xamp/htdocs/test-new/core/main/config.php</file>
-            <file>file:/D:/xamp/htdocs/test-new/application/views/about/index.php</file>
-            <file>file:/D:/xamp/htdocs/test-new/application/controllers/about.php</file>
-            <file>file:/D:/xamp/htdocs/test-new/application/media/js/timer.js</file>
-            <file>file:/D:/xamp/htdocs/test-new/application/models/homemodel.php</file>
-            <file>file:/D:/xamp/htdocs/test-new/application/controllers/home.php</file>
-            <file>file:/D:/xamp/htdocs/test-new/application/models/topmenumodel.php</file>
-            <file>file:/D:/xamp/htdocs/test-new/application/views/home/index.tpl</file>
-            <file>file:/D:/xamp/htdocs/test-new/application/media/js/skrypty.js</file>
-            <file>file:/D:/xamp/htdocs/test-new/application/library/header_module/header.php</file>
+            <file>file:/D:/xamp/htdocs/pdf_test/application/views/home/index.tpl</file>
+            <file>file:/D:/xamp/htdocs/pdf_test/application/views/contact/index.php</file>
+            <file>file:/D:/xamp/htdocs/pdf_test/application/media/js/skrypty.js</file>
+            <file>file:/D:/xamp/htdocs/pdf_test/application/controllers/home.php</file>
+            <file>file:/D:/xamp/htdocs/pdf_test/core/helpers/loader_helper.php</file>
+            <file>file:/D:/xamp/htdocs/pdf_test/application/library/menu_module/menu.php</file>
+            <file>file:/D:/xamp/htdocs/pdf_test/application/library/menu_module/menu.js</file>
+            <file>file:/D:/xamp/htdocs/pdf_test/application/models/homemodel.php</file>
+            <file>file:/D:/xamp/htdocs/pdf_test/core/helpers/module_helper.php</file>
+            <file>file:/D:/xamp/htdocs/pdf_test/application/library/header_module/header.php</file>
+            <file>file:/D:/xamp/htdocs/pdf_test/application/controllers/contact.php</file>
+            <file>file:/D:/xamp/htdocs/pdf_test/application/media/css/style.css</file>
         </group>
     </open-files>
 </project-private>

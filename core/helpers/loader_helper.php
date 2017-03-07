@@ -46,9 +46,10 @@ function javascript_load($files)
 function add_javascript($file)
 {
 	$res = "";
-	
-	if(file_exists($file)) $res = "<script type=\"text/javascript\">\n".file_get_contents($file)."\n</script>";
-	
+	if(file_exists($file)) {
+	    $res = "<script type=\"text/javascript\">\n".file_get_contents($file)."\n</script>";
+    }
+
 	return $res;
 }
 

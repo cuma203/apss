@@ -11,9 +11,9 @@ Abstract class controller
 
     public function __construct($params = Array()) 
     {
-        $this->params = $params;
+        $this->params   = $params;
         $this->tpl      = new Smarty;
-        $smarty_path = dirname(dirname(__DIR__)).DIRECTORY_SEPARATOR.'smarty'.DIRECTORY_SEPARATOR;
+        $smarty_path    = dirname(dirname(__DIR__)).DIRECTORY_SEPARATOR.'smarty'.DIRECTORY_SEPARATOR;
         $this->tpl->setTemplateDir('application/views');
         $this->tpl->setCompileDir($smarty_path.'templates_c');
         $this->tpl->setCacheDir($smarty_path.'cache');
@@ -22,12 +22,9 @@ Abstract class controller
 
     public function __get($var)
     {
-        if($var == "params")
-        {
+        if($var == "params"){
             return $this->params;
-        }
-        else
-        {
+        }else{
             return registry::register($var);
         }
     }

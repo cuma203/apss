@@ -1,0 +1,11 @@
+<div class='navbar navbar-inverse navbar-fixed-top'>
+    <!--<a class="navbar-brand" href="#"><b style="color: #ffffff;">CRM</b><span style="color:#cd5c5c;">system</span></a>-->
+    <div class='navbar-inner'>
+        <span ng-repeat="menu in topMenu">
+            <a href="{{menu.url}}" ng-click="menu.url==''?logoutUser():true;" style="font-size:16px; text-decoration:none; cursor:pointer; color: #0bd0ff;
+                    margin-right:50px;margin-top:10px; cursor: pointer;" ng-style="setStyle(menu.url)"
+                  class="pull-right hidden-xs showopacity glyphicon {{menu.class}}">
+            </a>
+        </span>
+</div>
+</div>

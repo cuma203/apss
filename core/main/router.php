@@ -48,7 +48,7 @@ class router
         {
             foreach($_POST as $key => $val)
             {
-                $this->params['POST'][$key] = $val;
+                $this->params[$key] = $val;
             }
         }
 

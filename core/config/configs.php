@@ -52,7 +52,7 @@ $configs['jscript_fast_decode'] = true;
 $configs['jscript_special_chars'] = false;
 
 /**
- * USTAWIENIA JÄ?ZYKOWE
+ * USTAWIENIA Jï¿½?ZYKOWE
  */
  
 $configs['default_session_var'] = 'lang';
@@ -106,6 +106,6 @@ $configs['driver_path'] = "core".DS."drivers".DS;
 $configs['db_host'] = "localhost";
 $configs['db_user'] = "root";
 $configs['db_pass'] = "";
-$configs['db_name'] = "mvc_cms";
+$configs['db_name'] = "aplikacja";
 
 ?>

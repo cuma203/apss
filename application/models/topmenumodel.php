@@ -16,7 +16,7 @@ class topmenumodel
 
     public function showTopMenu()
     {
-        $SQL = "SELECT * FROM top_menu";
+        $SQL = "SELECT * FROM aplikacja.top_menu";
         $data = $this->__db->execute($SQL);
         return $data;
     }

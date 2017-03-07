@@ -1,0 +1,59 @@
+<div class="container" style="margin-bottom: 100px;">
+    <div class="panel-group" ng-controller="userCtrl">
+        <div class="panel panel-info" style="width:50%;">
+            <div class="panel-heading">Podstawowe informacje</div>
+            <div class="panel-body">
+                <table class="table" style="width: 100%;" ng-repeat="user in showUserData">
+                    <tbody>
+                    <tr>
+                        <th scope="row">Nazwisko</th>
+                        <td>{{user.fullname}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Login</th>
+                        <td>{{user.username}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Data urodzenia</th>
+                        <td>{{user.birthdate}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Telefon</th>
+                        <td>{{user.phone}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Email</th>
+                        <td>{{user.mail}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="panel panel-info" style="width:50%;">
+            <div class="panel-heading">Adresy użytkownika</div>
+            <div class="panel-body">
+                <table class="table" style="width: 100%;" ng-repeat="address in showUserAddresses">
+                    <tbody>
+                    <tr>
+                        <th style="text-align: center;" colspan="2">
+                            {{address.id}}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Miasto</th>
+                        <td>{{address.city}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Ulica</th>
+                        <td>{{address.street}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Kod pocztowy</th>
+                        <td>{{address.zipcode}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -21,6 +21,7 @@ function loader($name)
 {
     require_once($name.".php");
 }
+
 spl_autoload_register('loader');    
 
 ?>
